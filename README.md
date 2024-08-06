@@ -32,6 +32,7 @@ bash:
   cp ../lambda_function.py
   cp ../fraud_detection_model.pkl
   zip -r deployment_package.zip
+** Upload the zip file to an S3 bucket and create a Lambda function using the AWS CLI or AWS Management Console.
 
 # To create the docker file:
 bash:
