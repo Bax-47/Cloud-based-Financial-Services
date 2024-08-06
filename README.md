@@ -49,7 +49,7 @@ bash:
   docker build -t crm-service .
   docker run -p 5000:80 crm-service
 
-# After creating kubernetes file 'k8s/deployment.yaml'
+# After creating kubernetes file in k8s/deployment.yaml
 # Apply the deployment:
 bash:
   kubectl apply -f k8s/deployment.yaml
