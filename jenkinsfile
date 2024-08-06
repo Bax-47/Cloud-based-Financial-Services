@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    docker.build('myrepo/crm-service:latest')
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    docker.image('myrepo/crm-service:latest').inside {
+                        sh 'pytest'
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    kubernetesDeploy(configs: 'k8s/deployment.yaml', kubeconfigId: 'kubeconfig')
+                }
+            }
+        }
+    }
+}
